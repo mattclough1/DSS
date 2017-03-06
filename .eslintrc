@@ -1,0 +1,23 @@
+{
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "rules": {
+    "indent": [2, 4],
+    "max-len": [0, 100],
+    "comma-dangle": [2, "never"],
+    "new-cap": [0],
+    "no-unused-vars": [2, {
+      "vars": "all",
+      "argsIgnorePattern": "^_",
+      "varsIgnorePattern": "^_"
+    }],
+    "prefer-template": [0]
+  },
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "webpack.config.js"
+      }
+    }
+  }
+}
