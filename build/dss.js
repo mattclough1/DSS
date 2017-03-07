@@ -371,8 +371,6 @@ var DSS = function () {
                 temp = {};
             });
 
-            console.log('test');
-
             // Execute callback with filename and blocks
             callback({ blocks: parsedBlocks });
         }

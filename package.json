@@ -27,7 +27,7 @@
   },
   "scripts": {
     "build": "webpack --config webpack.config.js --progress --colors",
-    "start": "watch 'npm run build && npm run test' src",
+    "start": "watch 'npm run build && npm run test --silent' src",
     "test": "nodeunit"
   },
   "dependencies": {
