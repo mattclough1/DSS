@@ -78,7 +78,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.default = trim;
-function trim(str, arr) {
+function trim(str, arr, log) {
     var defaults = [/^\s\s*/, /\s\s*$/];
     var newArr = Array.isArray(arr) ? arr.concat(defaults) : defaults;
     var trimmedStr = void 0;
@@ -242,7 +242,7 @@ var DSS = function () {
                 file: file,
                 name: name,
                 line: {
-                    contents: (0, _util.trim)(parts.substr(index)),
+                    contents: (0, _util.trim)(parts.substr(index), [], 'trimming from output'),
                     from: block.indexOf(line),
                     to: block.indexOf(line)
                 },
@@ -364,9 +364,12 @@ var DSS = function () {
                 to = _block.to;
 
                 // Remove extra whitespace
+                console.log(_block, '_block');
                 var block = _block.text.split('\n').filter(function (line) {
+                    console.log((0, _util.normalize)(line), 'normalized line');
                     return (0, _util.trim)((0, _util.normalize)(line));
                 }).join('\n');
+                console.log(block, 'block');
                 // const block = _block.text.split('\n').filter(line => (
                 //     trim(normalize(line))
                 // )).join('\n');
@@ -1017,7 +1020,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function normalize(textBlock) {
     // Strip out any preceding [whitespace]* that occurs on every line
-    var normalized = textBlock.replace(/^(\s+\*+)/, '');
+    var innerBlock = textBlock.replace(/^(\s+\*+)/, '');
 
     // Strip consistent indenting by measuring first line's whitespace
     var indentSize = void 0;
@@ -1028,16 +1031,13 @@ function normalize(textBlock) {
             if (line === '') {
                 return '';
             } else if (indentSize <= precedingWhitespace && indentSize > 0) {
-                console.log(line.slice(indentSize, line.length - 1));
-                return line.slice(indentSize, line.length - 1);
+                return line.slice(indentSize, line.length);
             }
             return line;
         }).join('\n');
     };
 
-    normalized = unindented(normalized);
-
-    return (0, _trim2.default)(normalized);
+    return (0, _trim2.default)(unindented(innerBlock));
 }
 module.exports = exports['default'];
 

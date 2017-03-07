@@ -45,7 +45,7 @@ export default class DSS {
             file,
             name,
             line: {
-                contents: trim(parts.substr(index)),
+                contents: trim(parts.substr(index), [], 'trimming from output'),
                 from: block.indexOf(line),
                 to: block.indexOf(line)
             },
@@ -161,9 +161,12 @@ export default class DSS {
             to = _block.to;
 
             // Remove extra whitespace
-            const block = _block.text.split('\n').filter(line => {
+            console.log(_block, '_block');
+            const block = _block.text.split('\n').filter((line) => {
+                console.log(normalize(line), 'normalized line');
                 return trim(normalize(line))
             }).join('\n');
+            console.log(block, 'block');
             // const block = _block.text.split('\n').filter(line => (
             //     trim(normalize(line))
             // )).join('\n');

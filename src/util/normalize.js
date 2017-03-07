@@ -12,7 +12,7 @@ import trim from './trim';
 
 export default function normalize(textBlock) {
     // Strip out any preceding [whitespace]* that occurs on every line
-    let normalized = textBlock.replace(/^(\s+\*+)/, '');
+    const innerBlock = textBlock.replace(/^(\s+\*+)/, '');
 
     // Strip consistent indenting by measuring first line's whitespace
     let indentSize;
@@ -23,14 +23,11 @@ export default function normalize(textBlock) {
             if (line === '') {
                 return '';
             } else if (indentSize <= precedingWhitespace && indentSize > 0) {
-                console.log(line.slice(indentSize, (line.length - 1)));
-                return line.slice(indentSize, (line.length - 1));
+                return line.slice(indentSize, line.length);
             }
             return line;
         }).join('\n')
     );
 
-    normalized = unindented(normalized);
-
-    return trim(normalized);
+    return trim(unindented(innerBlock));
 }
