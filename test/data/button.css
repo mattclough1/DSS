@@ -1,15 +1,15 @@
 /*
-* @name Button
-* @description Your standard form button.
-*
-* @state :hover - Highlights when hovering.
-* @state .smaller - A smaller button
-*
-* @markup
-*   <button>This is a button</button>
-*/
+** @name Button
+** @description Your standard form button.
+**
+** @state :hover - Highlights when hovering.
+** @state .smaller - A smaller button
+**
+** @markup
+**   <button>This is a button</button>
+**/
 
 /*
-@name Button2
-@description Another button
+* @name Button2
+* @description Another button
 */

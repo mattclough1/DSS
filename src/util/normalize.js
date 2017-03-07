@@ -1,4 +1,4 @@
-import trim from './trim';
+import trimWhitespace from './trimWhitespace';
 
 /*
 * Normalizes the comment block to ignore any consistent preceding
@@ -11,23 +11,18 @@ import trim from './trim';
 */
 
 export default function normalize(textBlock) {
-    // Strip out any preceding [whitespace]* that occurs on every line
-    const innerBlock = textBlock.replace(/^(\s+\*+)/, '');
-
     // Strip consistent indenting by measuring first line's whitespace
     let indentSize;
-    const unindented = lines => (
-        lines.split('\n').map((line) => {
-            const precedingWhitespace = line.match(/^\s*/)[0].length;
-            if (!indentSize) indentSize = precedingWhitespace;
-            if (line === '') {
-                return '';
-            } else if (indentSize <= precedingWhitespace && indentSize > 0) {
-                return line.slice(indentSize, line.length);
-            }
-            return line;
-        }).join('\n')
-    );
+    const normalized = textBlock.split('\n').map((line) => {
+        const precedingWhitespace = line.match(/^\s*/)[0].length;
+        if (!indentSize) indentSize = precedingWhitespace;
+        if (line === '') {
+            return '';
+        } else if (indentSize <= precedingWhitespace && indentSize > 0) {
+            return line.slice(indentSize, line.length);
+        }
+        return line;
+    }).join('\n');
 
-    return trim(unindented(innerBlock));
+    return normalized;
 }

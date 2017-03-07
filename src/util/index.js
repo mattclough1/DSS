@@ -1,9 +1,9 @@
 import endMultiLineComment from './endMultiLineComment';
-import parseMultiLine from './parseMultiLine';
-import parseSingleLine from './parseSingleLine';
+import trimMultiLine from './trimMultiLine';
+import trimSingleLine from './trimSingleLine';
 import singleLineComment from './singleLineComment';
 import startMultiLineComment from './startMultiLineComment';
-import trim from './trim';
+import trimWhitespace from './trimWhitespace';
 import size from './size';
 import squeeze from './squeeze';
 import normalize from './normalize';
@@ -12,11 +12,11 @@ import cleanLine from './cleanLine';
 
 export default {
     endMultiLineComment,
-    parseMultiLine,
-    parseSingleLine,
+    trimMultiLine,
+    trimSingleLine,
     singleLineComment,
     startMultiLineComment,
-    trim,
+    trimWhitespace,
     size,
     squeeze,
     normalize,

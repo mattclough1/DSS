@@ -1,5 +1,5 @@
 import DSS from './dss';
-import { trim } from './util';
+import { trimWhitespace } from './util';
 
 const dss = new DSS();
 
@@ -22,9 +22,9 @@ dss.parser('description', ({ line }) => line.contents);
 dss.parser('state', ({ line }) => {
     const state = line.contents.split(' - ');
     return [{
-        name: (state[0]) ? trim(state[0]) : '',
-        escaped: (state[0]) ? trim(state[0].replace('.', ' ').replace(':', ' pseudo-class-')) : '',
-        description: (state[1]) ? trim(state[1]) : ''
+        name: (state[0]) ? trimWhitespace(state[0]) : '',
+        escaped: (state[0]) ? trimWhitespace(state[0].replace('.', ' ').replace(':', ' pseudo-class-')) : '',
+        description: (state[1]) ? trimWhitespace(state[1]) : ''
     }];
 });
 
