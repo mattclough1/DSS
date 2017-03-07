@@ -61,7 +61,7 @@ export default class DSS {
         const contents = block.split('').splice(output.line.from, markupLength).join('').replace(parserMarker, '');
 
         // Redefine output contents to support multiline contents
-        output.line.contents = cleanLine(contents, parserMarker);
+        output.line.contents = trimWhitespace(contents);
 
         const newLine = {};
         newLine[name] = (this.parsers[name]) ? this.parsers[name].call(output, output) : '';
@@ -164,6 +164,8 @@ export default class DSS {
             }
             temp = {};
         });
+
+        console.log('test');
 
         // Execute callback with filename and blocks
         callback({ blocks: parsedBlocks });

@@ -8,7 +8,6 @@ import size from './size';
 import squeeze from './squeeze';
 import normalize from './normalize';
 import getStrIndex from './getStrIndex';
-import cleanLine from './cleanLine';
 
 export default {
     endMultiLineComment,
@@ -20,6 +19,5 @@ export default {
     size,
     squeeze,
     normalize,
-    getStrIndex,
-    cleanLine
+    getStrIndex
 };

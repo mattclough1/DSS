@@ -26,7 +26,7 @@
     "node": ">= 0.8.0"
   },
   "scripts": {
-    "build": "webpack webpack.config.js",
+    "start": "webpack --config webpack.config.js --progress --colors --watch",
     "test": "nodeunit"
   },
   "dependencies": {
