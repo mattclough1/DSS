@@ -7,8 +7,7 @@ import {
     trimWhitespace,
     size,
     normalize,
-    getStrIndex,
-    cleanLine
+    getStrIndex
 } from './util';
 
 export default class DSS {
