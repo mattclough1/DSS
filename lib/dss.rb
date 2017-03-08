@@ -164,7 +164,7 @@ class DSS
         end
       end
 
-      if temp.length
+      if temp.length > 0
         parsed_blocks.push(temp)
       end
       temp = {}
