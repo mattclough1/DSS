@@ -152,7 +152,7 @@ class DSS
       from = _block[:from]
       to = _block[:to]
       block = _block[:text].split(/\n/).select do |line|
-        trim_whitespace(normalize(line)).length > 0
+        line.length > 0
       end
       block = block.join("\n")
 
