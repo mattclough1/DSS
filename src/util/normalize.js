@@ -1,5 +1,3 @@
-import trimWhitespace from './trimWhitespace';
-
 /*
 * Normalizes the comment block to ignore any consistent preceding
 * whitespace. Consistent means the same amount of whitespace on every line

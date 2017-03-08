@@ -78,15 +78,15 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _endMultiLineComment = __webpack_require__(4);
+var _endMultiLineComment = __webpack_require__(3);
 
 var _endMultiLineComment2 = _interopRequireDefault(_endMultiLineComment);
 
-var _trimMultiLine = __webpack_require__(10);
+var _trimMultiLine = __webpack_require__(9);
 
 var _trimMultiLine2 = _interopRequireDefault(_trimMultiLine);
 
-var _trimSingleLine = __webpack_require__(11);
+var _trimSingleLine = __webpack_require__(10);
 
 var _trimSingleLine2 = _interopRequireDefault(_trimSingleLine);
 
@@ -94,27 +94,27 @@ var _singleLineComment = __webpack_require__(1);
 
 var _singleLineComment2 = _interopRequireDefault(_singleLineComment);
 
-var _startMultiLineComment = __webpack_require__(9);
+var _startMultiLineComment = __webpack_require__(8);
 
 var _startMultiLineComment2 = _interopRequireDefault(_startMultiLineComment);
 
-var _trimWhitespace = __webpack_require__(2);
+var _trimWhitespace = __webpack_require__(11);
 
 var _trimWhitespace2 = _interopRequireDefault(_trimWhitespace);
 
-var _size = __webpack_require__(7);
+var _size = __webpack_require__(6);
 
 var _size2 = _interopRequireDefault(_size);
 
-var _squeeze = __webpack_require__(8);
+var _squeeze = __webpack_require__(7);
 
 var _squeeze2 = _interopRequireDefault(_squeeze);
 
-var _normalize = __webpack_require__(6);
+var _normalize = __webpack_require__(5);
 
 var _normalize2 = _interopRequireDefault(_normalize);
 
-var _getStrIndex = __webpack_require__(5);
+var _getStrIndex = __webpack_require__(4);
 
 var _getStrIndex2 = _interopRequireDefault(_getStrIndex);
 
@@ -158,35 +158,6 @@ module.exports = exports["default"];
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.default = trimWhitespace;
-/*
-* Trim whitespace from string
-*
-* @param (String) The string to be trimmed
-* @return (String) The trimmed string
-*/
-
-function trimWhitespace(str, arr) {
-    var defaults = [/^\s\s*/, /\s\s*$/];
-    var newArr = Array.isArray(arr) ? arr.concat(defaults) : defaults;
-    var trimmedStr = str;
-    newArr.forEach(function (regEx) {
-        trimmedStr = trimmedStr.replace(regEx, '');
-    });
-    return trimmedStr;
-}
-module.exports = exports['default'];
-
-/***/ }),
-/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -383,7 +354,7 @@ exports.default = DSS;
 module.exports = exports['default'];
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -415,7 +386,7 @@ function endMultiLineComment(line) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -434,7 +405,7 @@ function getStrIndex(str, find) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -444,13 +415,6 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.default = normalize;
-
-var _trimWhitespace = __webpack_require__(2);
-
-var _trimWhitespace2 = _interopRequireDefault(_trimWhitespace);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 /*
 * Normalizes the comment block to ignore any consistent preceding
 * whitespace. Consistent means the same amount of whitespace on every line
@@ -480,7 +444,7 @@ function normalize(textBlock) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -496,7 +460,7 @@ function size(obj) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -512,7 +476,7 @@ function squeeze(str, def) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -534,7 +498,7 @@ function startMultiLineComment(line) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -556,7 +520,7 @@ function trimMultiLine(line) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 11 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -578,6 +542,35 @@ function trimSingleLine(line) {
 module.exports = exports['default'];
 
 /***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = trimWhitespace;
+/*
+* Trim whitespace from string
+*
+* @param (String) The string to be trimmed
+* @return (String) The trimmed string
+*/
+
+function trimWhitespace(str, arr) {
+    var defaults = [/^\s\s*/, /\s\s*$/];
+    var newArr = Array.isArray(arr) ? arr.concat(defaults) : defaults;
+    var trimmedStr = str;
+    newArr.forEach(function (regEx) {
+        trimmedStr = trimmedStr.replace(regEx, '');
+    });
+    return trimmedStr;
+}
+module.exports = exports['default'];
+
+/***/ }),
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -588,7 +581,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _dss = __webpack_require__(3);
+var _dss = __webpack_require__(2);
 
 var _dss2 = _interopRequireDefault(_dss);
 
