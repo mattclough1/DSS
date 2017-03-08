@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require 'dss'
+puts DSS.parse(ARGV[0])

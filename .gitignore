@@ -1,6 +1,8 @@
-/node_modules/
+.bundle/
+log/*.log
+pkg/
+/examples/
+
+# OSX Finder
 .DS_STORE
 .DS_Store?
-/examples/
-test.js
-npm-debug.log

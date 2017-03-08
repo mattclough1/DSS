@@ -36,15 +36,15 @@ In most cases, you will want to include the **DSS** parser in a build step that 
 //
 // @name Button
 // @description Your standard form button.
-// 
+//
 // @state :hover - Highlights when hovering.
 // @state :disabled - Dims the button when disabled.
 // @state .primary - Indicates button is the primary action.
 // @state .smaller - A smaller button
-// 
+//
 // @markup
 //   <button>This is a button</button>
-// 
+//
 ````
 
 ##### Example Usage
@@ -74,7 +74,7 @@ dss.parse( fileContents, {}, function ( parsedObject ) {
   "name": "Button",
   "description": "Your standard form button.",
   "state": [
-    { 
+    {
       "name": ":hover",
       "escaped": "pseudo-class-hover",
       "description": "Highlights when hovering."
@@ -111,7 +111,7 @@ This method defines the way in which points of interest (ie. variables) are foun
 // Describe default detection pattern
 // Note: the current line, as a string, is passed to this function
 dss.detector( function( line ) {
-  
+
   if ( typeof line !== 'string' ) {
     return false;
   }
@@ -140,8 +140,8 @@ dss.detector( function( line ) {
   - `this.block.contents`: The content associated with this variable's comment block
   - `this.block.from`: The line number where this variable's comment block starts
   - `this.block.to`: The line number where this variable's comment block ends
-  
-    
+
+
 ##### Custom Parser Examples:
 
 ```javascript
@@ -161,7 +161,7 @@ dss.parser( 'link', function () {
   var exp = /(b(https?|ftp|file)://[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/ig;
   this.line.contents.replace(exp, "<a href='$1'>$1</a>");
   return line;
-   
+
 });
 ````
 
