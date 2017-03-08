@@ -61,7 +61,7 @@ class DSS
       file: file,
       name: name,
       line: {
-        contents: trim_whitespace(parts[index..-1]),
+        contents: nil,
         from: block.index(line),
         to: block.index(line)
       },
@@ -76,11 +76,9 @@ class DSS
     markup_length = !next_parser_index.nil? ? next_parser_index - output[:line][:from] : block.length
     parser_marker = "@#{name}"
     contents = block.split('').slice(output[:line][:from], markup_length).join('').gsub(parser_marker, '')
-
-    output[:line][:contents] = trim_whitespace(contents)
+    output[:line][:contents] = trim_whitespace(normalize(contents))
 
     new_line = {}
-
     new_line[name] = !@parsers[name.to_sym].nil? ? @parsers[name.to_sym].call(output) : ''
 
     if (temp[name])
@@ -154,7 +152,7 @@ class DSS
       from = _block[:from]
       to = _block[:to]
       block = _block[:text].split(/\n/).select do |line|
-        trim_whitespace(normalize(line)).length > 0
+        line.length > 0
       end
       block = block.join("\n")
 
@@ -175,7 +173,7 @@ class DSS
   private
 
   def trim_whitespace(str)
-    patterns = [/^\s\s*/, /\s\s*$/]
+    patterns = [/\A\s\s*/, /\s\s*\z/]
     trimmed_str = str
     patterns.each do |regEx|
       trimmed_str = trimmed_str.gsub(regEx, '')
@@ -184,11 +182,11 @@ class DSS
   end
 
   def single_line_comment(line)
-    !!(/^\s*\/\//).match(line)
+    !!(/\A\s*\/\//).match(line)
   end
 
   def start_multi_line_comment(line)
-    !!(/^\s*\/\*/).match(line)
+    !!(/\A\s*\/\*/).match(line)
   end
 
   def trim_single_line(line)
@@ -196,7 +194,7 @@ class DSS
   end
 
   def trim_multi_line(line)
-    line.gsub(/^(\/\*|\*\/|\*)+/, '')
+    line.gsub(/\A(\/\*|\*\/|\*)+/, '')
   end
 
   def end_multi_line_comment(line)
@@ -207,9 +205,10 @@ class DSS
   end
 
   def normalize(text_block)
+    indent_size = 0
     normalized = text_block.split(/\n/).map do |line|
-      preceding_whitespace = (/^\s*/).match(line)[0].length
-      indent_size = preceding_whitespace unless indent_size
+      preceding_whitespace = (/\A\s*/).match(line)[0].length
+      indent_size = preceding_whitespace unless indent_size > 0
       if line === ''
         ''
       elsif (indent_size <= preceding_whitespace) && (indent_size > 0)

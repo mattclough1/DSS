@@ -6,7 +6,6 @@ class DssTest < Minitest::Test
     css = File.read('test/data/button.css')
     dss = DSS.new()
     block = dss.parse(css)[:blocks][0]
-    puts block
     assert_equal 'Button', block[:name]
     assert_equal 'Your standard form button.', block[:description]
 
