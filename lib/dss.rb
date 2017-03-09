@@ -194,7 +194,7 @@ class DSS
   end
 
   def trim_multi_line(line)
-    line.gsub(/\A(\/\*|\*\/|\*)+/, '')
+    line.gsub(/\A.*(\/\*|\*\/|\*)+/, '')
   end
 
   def end_multi_line_comment(line)
